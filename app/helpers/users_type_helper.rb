@@ -1,2 +1,0 @@
-module UsersTypeHelper
-end

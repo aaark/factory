@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729083307) do
+ActiveRecord::Schema.define(version: 20160729133409) do
 
   create_table "engines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "fuel"
@@ -19,29 +19,18 @@ ActiveRecord::Schema.define(version: 20160729083307) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.text     "content",    limit: 65535
-    t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "admin"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "user_has_vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users_vehicles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
     t.integer  "vehicle_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string  "name"
-    t.string  "email"
-    t.string  "password_digest"
-    t.boolean "admin",           default: false
-  end
-
-  create_table "users_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "type_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,13 +43,13 @@ ActiveRecord::Schema.define(version: 20160729083307) do
   end
 
   create_table "vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "color"
-    t.date     "st_date"
-    t.date     "del_date"
-    t.string   "vehicle_type_id"
-    t.integer  "engine_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer "vehicle_type_id"
+    t.integer "engine_id"
+    t.string  "color"
+    t.date    "st_date"
+    t.date    "del_date"
+    t.index ["engine_id"], name: "index_vehicles_on_engine_id", using: :btree
+    t.index ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
   end
 
 end

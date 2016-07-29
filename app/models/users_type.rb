@@ -1,2 +1,0 @@
-class UsersType < ApplicationRecord
-end

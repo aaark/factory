@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_vehicles/new'
+
   get 'user_has_vehicle/new'
 
   get 'engine/new'
