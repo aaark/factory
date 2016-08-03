@@ -1,0 +1,29 @@
+</br>
+</br>
+<h1> Vehicle information </h1>
+<table border="1" class="table">
+  <tr>
+    <th>Id</th>
+    <th>Color</th>
+    <th>Name</th>
+    <th>Weight_Occupants</th>
+    <th>Fuel</th>
+    <th>PowerRating</th>
+    <th>Action</th>
+    <th>Action</th>
+    <th>Action</th>
+  </tr>
+  <% @vehicle.each do |vech|%>
+      <tr>
+        <td><%= vech.id%></td>
+        <td><%= vech.color%></td>
+        <td><%= vech.type_name%></td>
+        <td><%= vech.wt_oc%></td>
+        <td><%= vech.fuel%></td>
+        <td><%= vech.power_rating%></td>
+        <td><%= link_to 'Show', vehicle_path(vech)%></td>
+        <td><%= link_to 'Add', add_vehicle_path(vech), method: 'post' %></td>
+        <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
+      </tr>
+  <%end%>
+</table>

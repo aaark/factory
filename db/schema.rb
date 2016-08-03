@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729133409) do
+ActiveRecord::Schema.define(version: 20160802101427) do
 
   create_table "engines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "fuel"
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 20160729133409) do
   end
 
   create_table "vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer "vehicle_type_id"
-    t.integer "engine_id"
     t.string  "color"
     t.date    "st_date"
     t.date    "del_date"
-    t.index ["engine_id"], name: "index_vehicles_on_engine_id", using: :btree
-    t.index ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
+    t.string  "fuel"
+    t.integer "power_rating"
+    t.string  "type_name"
+    t.integer "wt_oc"
   end
 
 end

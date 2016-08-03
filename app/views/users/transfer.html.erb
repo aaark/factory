@@ -1,0 +1,15 @@
+
+<% provide(:title, 'Transfer your admin role') %>
+<h1>Transfer your adminstration</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <%= form_for :test, url: search_path do |f| %>
+          <td><%= f.label :email %></td>
+          <td><%= f.select :id, @users.collect{|u| [u.email, u.id]} %></td>
+          <tr><td><%= f.submit "Make admin", class: "btn btn-primary" %></td></tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+
+
+<% provide(:title, 'Add a new Vehicle') %>
+<h1>Create Vehicle</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <%= form_for(@vehicle, url: vehicle_path) do |f| %>
+          <tr>
+
+            <td><%= f.label :Color %></td>
+            <td><%= f.text_field :color %> </td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :StartDate %></td>
+            <td><%= f.date_field :st_date %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :DeliveryDate %></td>
+            <td><%= f.date_field :del_date %></td>
+          </tr>
+          <tr>
+
+            <td><%= f.label :fuel %></td>
+            <td><%= f.select :fuel, Vehicle::FUEL %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :PowerRating %></td>
+            <td><%= f.number_field :power_rating%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :TypeName %></td>
+            <td><%= f.select :type_name, Vehicle::TYPE_NAME,{},{onchange: "validateform()" }%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :WeightOccupants %></td>
+            <td><%= f.number_field :wt_oc%></td>
+          </tr>
+          <tr><td><%= f.submit "Insert Vehicle", class: "btn btn-primary" %></td></tr>
+      <% end %>
+    </table>
+  </div>
+</div>

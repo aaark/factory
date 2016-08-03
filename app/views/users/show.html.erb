@@ -1,9 +1,11 @@
+
 <br/>
 <br/>
 <%= @user.name %>  <%= @user.email%>
+<div>
 <% if @user.admin == true  %>
-<a href="/create"> add new user</a>
-    <table border="4px">
+<!--<a href="/create"> add new user</a>-->
+    <table border="4px" class ="table">
       <tr>
          <th>User_id</th>
          <th>User_Name</th>
@@ -11,6 +13,7 @@
          <th>User_UserType</th>
          <th>Action1</th>
          <th>Action2</th>
+
 
       </tr>
       <% @user1.each do |u| %>
@@ -23,6 +26,62 @@
 
       <%end%>
     </table>
-<% else %>
-    <%= @user.vehicles.ids%>
+
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
+          <span class="caret"></span></button>
+        <ul class= "dropdown-menu">
+          <li>    <%= link_to 'Create new user', new_user_path() %></li>
+          <li><%= link_to 'See vehicles', vehicles_path %></li>
+          <li><a href="/vehicles/new">Add vehicles</a></li>
+          <li><%= link_to 'Transfer Your Admnstration', transfer_user_path %></li>
+          <li><%= link_to 'Add your Vehicle', vehicles_path %></li>
+        </ul>
+      </div>
+<%else%>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
+          <span class="caret"></span></button>
+        <ul class= "dropdown-menu">
+          <li><%= link_to 'Add your Vehicle', vehicles_path %></li>
+        </ul>
+      </div>
 <% end %>
+</div>
+<div>
+    <table border="1" class="table">
+      <tr>
+        <th> ID</th>
+        <th> Color</th>
+        <th> Type name</th>
+        <th> Weight/Occupants</th>
+        <th> Fuel type</th>
+        <th> Power rating</th>
+        <th> Start date</th>
+        <th> Delivery Date</th>
+        <th> Delete</th>
+        <th> Edit</th>
+        <th> Share</th>
+
+      </tr>
+      <%@user.vehicles.each do |vech|%>
+          <tr>
+            <td><%= vech.id%></td>
+            <td><%= vech.color%></td>
+            <td><%= vech.type_name%></td>
+            <td><%= vech.wt_oc%></td>
+            <td><%= vech.fuel%></td>
+            <td><%= vech.power_rating%></td>
+            <td><%= vech.st_date%></td>
+            <td><%= vech.del_date%></td>
+            <td><%= link_to 'Destroy',delete_vehicle_vehicle_path(vech) , method: :delete %></td>
+            <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
+            <td><%= link_to 'share', share_form_user_path(vech) %></td>
+
+          </tr>
+          </br>
+      <%end%>
+      -->
+    </table>
+  <%= Date.today%>
+</div>

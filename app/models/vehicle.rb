@@ -1,5 +1,10 @@
 class Vehicle < ApplicationRecord
-  belongs_to :engine
-  belongs_to :vehicle_type
+  FUEL = %w(Petrol Diesel CNG)
+  TYPE_NAME= ['sudan', 'truck']
+  validates :color, presence: true
+  validates :st_date, presence: true
+  validates :del_date, presence: true
+  validates :color, presence: true
+  validates :power_rating, inclusion: {in:  0..90}
   has_and_belongs_to_many :users
 end
