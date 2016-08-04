@@ -10,22 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802101427) do
-
-  create_table "engines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "fuel"
-    t.integer  "power_rating"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
+ActiveRecord::Schema.define(version: 20160804105641) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "email"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
-    t.boolean  "admin"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "admin",           default: false
   end
 
   create_table "users_vehicles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -35,21 +28,16 @@ ActiveRecord::Schema.define(version: 20160802101427) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "vehicle_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "wt_oc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string  "color"
-    t.date    "st_date"
-    t.date    "del_date"
-    t.string  "fuel"
-    t.integer "power_rating"
-    t.string  "type_name"
-    t.integer "wt_oc"
+    t.string   "color"
+    t.date     "st_date"
+    t.date     "del_date"
+    t.string   "fuel"
+    t.integer  "power_rating"
+    t.string   "type_name"
+    t.integer  "wt_oc"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

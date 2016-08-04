@@ -22,6 +22,7 @@ function validatedate()
     if(document.getElementById("vehicle_st_date").value >= document.getElementById("vehicle_del_date").value)
     {
         alert("check your dates");
+        document.getElementById("vehicle_st_date").focus();
         return false;
     }
     else
