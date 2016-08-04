@@ -4,12 +4,15 @@
 function validateform()
 {
     alert("hello");
-    var power = document.getElementById("vehicle_power_rating").value;
-    alert(power);
-    document.getElementById("vehicle_wt_oc").value = power/2;
-    document.getElementById("vehicle_wt_oc").disabled = true;
-    document.getElementById("vehicle_power_rating").disabled = true;
+    if(document.getElementById("vehicle_type_name").value == "truck")
+    {
+        var power = document.getElementById("vehicle_power_rating").value;
+        alert(power);
 
+        document.getElementById("vehicle_wt_oc").value = power / 2;
+        document.getElementById("vehicle_wt_oc").disabled = true;
+        document.getElementById("vehicle_power_rating").disabled = true;
+    }
 }
 
 function validatedate()

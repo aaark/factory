@@ -5,9 +5,10 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <table class="table" border="1">
       <%= form_for @vehicle, url: vehicles_path, html: {onsubmit: "return validatedate()"} do |f| %>
-          <tr>
+        <table class="table" border="1">
+
+        <tr>
 
             <td><%= f.label :Color %></td>
             <td><%= f.text_field :color %> </td>
@@ -39,7 +40,8 @@
             <td><%= f.number_field :wt_oc%></td>
           </tr>
           <tr><td colspan="2" style="width:100%;"><%= f.submit "Insert Vehicle", class: "btn btn-primary"  %></td></tr>
-      <% end %>
-    </table>
+        </table>
+
+  <% end %>
   </div>
 </div>

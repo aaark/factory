@@ -12,12 +12,13 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
-      render text: "not saved"
+      flash[:errror] = "not saved"
+      render 'new'
     end
   end
 
   def index
-
+   @users = User.all
   end
   def show
     check_logged_in?
@@ -53,6 +54,7 @@ class UsersController < ApplicationController
       redirect_to current_user
     else
       @user = User.find_by(id: params[:test][:id])
+      puts "user to admin",@user
       current_user.update(admin: "false")
       @user.update(admin:"true")
       flash[:success] = "Adminstration transfered"

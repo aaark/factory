@@ -10,8 +10,11 @@
     <th>Fuel</th>
     <th>PowerRating</th>
     <th>Action</th>
-    <th>Action</th>
-    <th>Action</th>
+    <% if current_user.admin == true%>
+        <th>Action</th>
+        <th>Action</th>
+
+  <%end%>
   </tr>
   <% @vehicle.each do |vech|%>
       <tr>
@@ -21,9 +24,12 @@
         <td><%= vech.wt_oc%></td>
         <td><%= vech.fuel%></td>
         <td><%= vech.power_rating%></td>
-        <td><%= link_to 'Show', vehicle_path(vech)%></td>
         <td><%= link_to 'Add', add_vehicle_path(vech), method: 'post' %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
+        <% if current_user.admin == true%>
+            <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
+            <td><%= link_to 'Destroy', vech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      <%end%>
       </tr>
   <%end%>
 </table>

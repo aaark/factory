@@ -12,9 +12,7 @@ class VehiclesController < ApplicationController
       redirect_to current_user
     else
       flash[:failure] = "Record not saved Ensure valid data"
-      redirect_to @vehicle
-
-
+      render :new
     end
   end
   def index
@@ -30,18 +28,21 @@ class VehiclesController < ApplicationController
     @current_user = current_user
 
     if  @current_user.vehicles.find_by(id: params[:id])
-      flash[:success] = "Sorry Cant be added it seems like it is already present"
-      redirect_to @current_user
+      flash[:errors] = "Sorry Cant be added it seems like it is already present"
+      redirect_to vehicles_path
+
     else
       @veh= Vehicle.find(params[:id])
       @current_user.vehicles << @veh
-      redirect_to @current_user
+      flash[:success] = "Successfully added"
+
+      redirect_to vehicles_path
     end
   end
   def delete_vehicle
     @current_user = current_user
     @veh= Vehicle.find(params[:id])
-    if @veh.del_date > Date.today
+   if @veh.del_date > Date.today
       flash[:success] = "Sorry Cant be deleted Please check your delivery date"
       redirect_to @current_user
     else
@@ -49,6 +50,12 @@ class VehiclesController < ApplicationController
       redirect_to @current_user
     end
 
+  end
+  def destroy
+    check_logged_in?
+    Vehicle.find(params[:id]).destroy
+    flash[:success] = "Vehicle deleted"
+    redirect_to :back
   end
   def edit
     check_logged_in?

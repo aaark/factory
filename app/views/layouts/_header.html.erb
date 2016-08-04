@@ -3,12 +3,15 @@
 
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
+
         <li><%= link_to "Help",   '#' %></li>
-        <li><%= link_to "Log in", '/login' %></li>
         <%if logged_in? %>
             <li><%= link_to "Log Out", '/logout' %></li>
-        <%end%>
+            <li><%= link_to "Home",   user_path(current_user) %></li>
+        <%else%>
+            <li><%= link_to "Log in", '/login' %></li>
+
+      <%end%>
       </ul>
     </nav>
   </div>

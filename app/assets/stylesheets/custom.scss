@@ -3,6 +3,45 @@
 
 
 /* universal */
+.parentdiv
+{
+  display:inline;
+  width:100%;
+  height:auto;
+}
+.childleft
+{
+  float:left;
+  display:inline;
+  width:15%;
+  height:auto;
+  margin-bottom: 2%;
+
+}
+.childright{
+  float:right;
+  margin-right:0%;
+  height:auto;
+  margin-bottom: 2%;
+  width:85%;
+
+}
+
+.imgclass{
+  width:auto;
+  height:150px;
+}
+body{
+  background-image: url(abcde.jpg);
+  background-repeat: no-repeat;
+}
+
+.jumbotron {
+  background-image: url(abc.jpg);
+  background-size: cover;
+  height:700px;
+  width:100%;
+}
 header{
   background-color: red;
 }

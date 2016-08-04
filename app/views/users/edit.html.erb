@@ -4,8 +4,9 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <table class="table">
-      <%= form_for(@user) do |f| %>
+
+    <%= form_for(@user) do |f| %>
+        <table class="table">
           <tr>
 
             <td><%= f.label :name %></td>
@@ -22,9 +23,10 @@
             <td><%= f.password_field :password %></td>
           </tr>
           <tr><td><%= f.submit "Update", class: "btn btn-primary" %></td></tr>
-      <% end %>
+        </table>
+    <% end %>
 
-    </table>
+
 
   </div>
 </div>

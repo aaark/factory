@@ -1,53 +1,30 @@
 
-<br/>
-<br/>
-<%= @user.name %>  <%= @user.email%>
-<div>
-<% if @user.admin == true  %>
+<div class="parentdiv">
+  <div class="childleft">
+    <%= image_tag("abcd.jpg",class: "imgclass") %>
+  </div>
+  <div class="childright">
+   Name: <%= @user.name %> <br> Email:<%= @user.email%> <br>Admin:<%= @user.admin%>
+  </div>
+</div>
+
 <!--<a href="/create"> add new user</a>-->
-    <table border="4px" class ="table">
-      <tr>
-         <th>User_id</th>
-         <th>User_Name</th>
-         <th>User_Email</th>
-         <th>User_UserType</th>
-         <th>Action1</th>
-         <th>Action2</th>
-
-
-      </tr>
-      <% @user1.each do |u| %>
-
-        <tr>
-          <td><%=u.id%></td><td><%=u.name%></td>  <td><%=u.email%></td> <td><%=u.admin%></td>
-          <td><%= link_to 'Edit', edit_user_path(u) %></td>
-          <td><%= link_to 'Destroy', u, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-
-      <%end%>
-    </table>
-
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
-          <span class="caret"></span></button>
-        <ul class= "dropdown-menu">
+  <div class="dropdown" style="width:100%;display:block;">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
+      <span class="caret"></span></button>
+    <ul class= "dropdown-menu">
+      <% if @user.admin == true  %>
           <li>    <%= link_to 'Create new user', new_user_path() %></li>
+          <li><%= link_to 'See Users', users_path %></li>
           <li><%= link_to 'See vehicles', vehicles_path %></li>
           <li><a href="/vehicles/new">Add vehicles</a></li>
           <li><%= link_to 'Transfer Your Admnstration', transfer_user_path %></li>
           <li><%= link_to 'Add your Vehicle', vehicles_path %></li>
-        </ul>
-      </div>
-<%else%>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
-          <span class="caret"></span></button>
-        <ul class= "dropdown-menu">
+      <%else%>
           <li><%= link_to 'Add your Vehicle', vehicles_path %></li>
-        </ul>
-      </div>
-<% end %>
-</div>
+      <%end%>
+    </ul>
+  </div>
 <div>
     <table border="1" class="table">
       <tr>
