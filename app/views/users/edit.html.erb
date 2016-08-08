@@ -21,7 +21,16 @@
 
             <td><%= f.label :password %></td>
             <td><%= f.password_field :password %></td>
+
           </tr>
+          <tr>
+
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation %>
+
+          </tr>
+
+
           <tr><td><%= f.submit "Update", class: "btn btn-primary" %></td></tr>
         </table>
     <% end %>

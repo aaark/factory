@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     member do
       post 'add'
       delete 'delete_vehicle'
+      get 'add_vehicle_to_list'
     end
   end
 

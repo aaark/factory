@@ -7,11 +7,12 @@ function validateform()
     if(document.getElementById("vehicle_type_name").value == "truck")
     {
         var power = document.getElementById("vehicle_power_rating").value;
+         power = parseFloat(power/1.00);
         alert(power);
 
-        document.getElementById("vehicle_wt_oc").value = power / 2;
-        document.getElementById("vehicle_wt_oc").disabled = true;
-        document.getElementById("vehicle_power_rating").disabled = true;
+        document.getElementById("vehicle_wt_oc").value = parseFloat(power / 2.00);
+        document.getElementById("vehicle_wt_oc").setAttribute('readonly','readonly');
+        document.getElementById("vehicle_power_rating").readonly = true;
     }
 }
 
@@ -32,3 +33,6 @@ function validatedate()
 
 
 }
+
+
+        text_box.setAttribute('readonly', 'readonly');   

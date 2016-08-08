@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      # Create an error message.
+      flash[:error] = "Inavalid email or password!!!"
       render 'new'
     end
   end

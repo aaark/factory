@@ -1,15 +1,41 @@
+</br>
+</br>
+<h1> Vehicle information </h1>
+<table border="1" class="table">
+  <tr>
+    <th>Id</th>
+    <th>Color</th>
+    <th>Name</th>
+    <th>Weight_Occupants</th>
+    <th>Fuel</th>
+    <th>PowerRating</th>
+    <th>Action</th>
+    <% if current_user.admin == true%>
+        <th>Action</th>
+        <th>Action</th>
 
-<div class="parentdiv">
-  <div class="childleft">
+  <%end%>
+  </tr>
+  <% @vehicles.each do |vech|%>
+      <tr>
+        <td><%= vech.id%></td>
+        <td><%= vech.color%></td>
+        <td><%= vech.type_name%></td>
+        <td><%= vech.wt_oc%></td>
+        <td><%= vech.fuel%></td>
+        <td><%= vech.power_rating%></td>
+        <td><%= link_to 'Add', add_vehicle_path(vech), method: 'post' %></td>
+        <% if current_user.admin == true%>
+            <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
+            <td><%= link_to 'Destroy', vech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-  </div>
-  <div class="childright">
-   Name: <%= @user.name %> <br> Email:<%= @user.email%> <br>Admin:<%= @user.admin%>
-  </div>
-</div>
+      <%end%>
+      </tr>
+  <%end%>
+</table>
 
-<!--<a href="/create"> add new user</a>-->
-  
+
+
 <div>
     <table border="1" class="table">
       <tr>
@@ -26,7 +52,7 @@
         <th> Share</th>
 
       </tr>
-      <%@user.vehicles.each do |vech|%>
+      <%current_user.vehicles.each do |vech|%>
           <tr>
             <td><%= vech.id%></td>
             <td><%= vech.color%></td>

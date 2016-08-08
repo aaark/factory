@@ -2,6 +2,25 @@
   <div class="container" style="background-color: maroon;">
 
     <nav>
+      <%if logged_in? == true%>
+
+      <div class="dropdown" style="width:100%;display:block;">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
+      <span class="caret"></span></button>
+    <ul class= "dropdown-menu">
+      <% if current_user.admin == true  %>
+          <li>    <%= link_to 'Create new user', new_user_path %></li>
+          <li><%= link_to 'See Users', users_path %></li>
+          <li><%= link_to 'See vehicles', vehicles_path %></li>
+          <li><a href="/vehicles/new">Add vehicles</a></li>
+          <li><%= link_to 'Transfer Your Admnstration', transfer_user_path(current_user) %></li>
+          <li><%= link_to 'Add your Vehicle', add_vehicle_to_list_vehicle_path(current_user) %></li>
+      <%else%>
+          <li><%= link_to 'Add your Vehicle', add_vehicle_to_list_vehicle_path(current_user) %></li>
+      <%end%>
+    </ul>
+  </div>
+   <%end%>
       <ul class="nav navbar-nav navbar-right">
 
         <li><%= link_to "Help",   '#' %></li>

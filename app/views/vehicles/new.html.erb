@@ -29,7 +29,7 @@
           </tr>
           <tr>
             <td><%= f.label :PowerRating %></td>
-            <td><%= f.number_field :power_rating%></td>
+            <td><%= f.number_field :power_rating, {onblur: "validateform()" }%></td>
           </tr>
           <tr>
             <td><%= f.label :TypeName %></td>
@@ -39,7 +39,7 @@
             <td><%= f.label :WeightOccupants %></td>
             <td><%= f.number_field :wt_oc%></td>
           </tr>
-          <tr><td colspan="2" style="width:100%;"><%= f.submit "Insert Vehicle", class: "btn btn-primary"  %></td></tr>
+          <tr><td colspan="2" style="width:100%"><%= f.button "Insert Vehicle", class: "btn btn-primary mycls"  %></td></tr>
         </table>
 
   <% end %>

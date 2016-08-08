@@ -5,5 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :email
       t.timestamps
     end
+    execute "ALTER TABLE users AUTO_INCREMENT = 1000"
+
   end
 end

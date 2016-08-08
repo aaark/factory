@@ -18,6 +18,7 @@ class VehiclesController < ApplicationController
   def index
     check_logged_in?
     @vehicle = Vehicle.all
+    @users = User.all
   end
   def show
   end
@@ -29,14 +30,14 @@ class VehiclesController < ApplicationController
 
     if  @current_user.vehicles.find_by(id: params[:id])
       flash[:errors] = "Sorry Cant be added it seems like it is already present"
-      redirect_to vehicles_path
+      redirect_to add_vehicle_to_list_vehicle_path
 
     else
       @veh= Vehicle.find(params[:id])
       @current_user.vehicles << @veh
       flash[:success] = "Successfully added"
 
-      redirect_to vehicles_path
+      redirect_to add_vehicle_to_list_vehicle_path
     end
   end
   def delete_vehicle
@@ -73,6 +74,11 @@ class VehiclesController < ApplicationController
       redirect_to @vehicle
     end
   end
+
+  def add_vehicle_to_list
+    @vehicles = Vehicle.all
+    #@users = User.all
+  end  
   private
   def vehicle_params
     params.require(:vehicle).permit(:color, :type_name, :st_date, :del_date, :fuel, :power_rating,:type_name, :wt_oc)
