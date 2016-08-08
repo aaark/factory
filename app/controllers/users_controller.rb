@@ -82,8 +82,40 @@ class UsersController < ApplicationController
   def transfer
     @users = User.where("id!=?", current_user.id)
   end
+
+  def change_pass
+  end 
+  def change_password
+  
+    if  current_user.authenticate(params[:user][:password])
+      if current_user.update(password: params[:user][:new_password], password_confirmation: params[:user][:password_confirmation])
+        flash[:success]="successfully updated Password"
+        redirect_to current_user
+      else
+        flash[:error]= "Not updated some error occurs"
+        redirect_to users_change_pass_path 
+      end           
+    else
+      flash[:error]="Your credintials doesn't match"
+      redirect_to users_change_pass_path
+    end
+
+  end  
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+

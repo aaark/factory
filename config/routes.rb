@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get 'engine/new'
 
   get 'vehicle/new'
+  get 'users/change_pass'
 
   #get 'vehicle_type/new'
 
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
        get 'share_form'
        post 'attach_sharing'
        get 'transfer'
+       post 'change_password'
      end
   end
   resources :vehicles do

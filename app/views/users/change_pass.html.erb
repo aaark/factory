@@ -1,0 +1,21 @@
+<% provide(:title, "Cahnge Password") %>
+<h1>Log in</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:user, url: change_password_user_path(current_user)) do |f| %>
+
+        <%= f.label :Old_Password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :New_Password %>
+        <%= f.password_field :new_password, class: 'form-control' %>
+        <%= f.label :Confirm_Password %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Change Password", class: "btn btn-primary" %>
+    <% end %>
+
+
+  </div>
+</div>
