@@ -1,11 +1,11 @@
 class VehiclesController < ApplicationController
+  before_action :check_logged_in?
+
   def new
-    check_logged_in?
     @vehicle = Vehicle.new
   end
 
   def create
-    check_logged_in?
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
       flash[:success] = "Record saved"
@@ -16,7 +16,6 @@ class VehiclesController < ApplicationController
     end
   end
   def index
-    check_logged_in?
     @vehicle = Vehicle.all
     @users = User.all
   end
@@ -44,7 +43,7 @@ class VehiclesController < ApplicationController
     @current_user = current_user
     @veh= Vehicle.find(params[:id])
    if @veh.del_date > Date.today
-      flash[:success] = "Sorry Cant be deleted Please check your delivery date"
+      flash[:errors] = "Sorry Cant be deleted Please check your delivery date"
       redirect_to @current_user
     else
       @current_user.vehicles.delete(@veh)
@@ -53,17 +52,14 @@ class VehiclesController < ApplicationController
 
   end
   def destroy
-    check_logged_in?
     Vehicle.find(params[:id]).destroy
     flash[:success] = "Vehicle deleted"
     redirect_to :back
   end
   def edit
-    check_logged_in?
     @vehicle = Vehicle.find(params[:id])
   end
   def update
-    check_logged_in?
     @vehicle = Vehicle.find(params[:id])
     if @vehicle.update_attributes(vehicle_params)
       # Handle a successful update.

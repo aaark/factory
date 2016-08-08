@@ -35,4 +35,3 @@ function validatedate()
 }
 
 
-        text_box.setAttribute('readonly', 'readonly');   
