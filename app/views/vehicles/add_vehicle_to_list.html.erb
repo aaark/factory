@@ -24,7 +24,7 @@
         <td><%= vech.wt_oc%></td>
         <td><%= vech.fuel%></td>
         <td><%= vech.power_rating%></td>
-        <td><%= link_to 'Add', add_vehicle_path(vech), method: 'post' %></td>
+        <td><%= link_to 'Add to your list', add_vehicle_path(vech), method: 'post' %></td>
         <% if current_user.admin == true%>
             <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
             <td><%= link_to 'Destroy', vech, method: :delete, data: { confirm: 'Are you sure?' } %></td>

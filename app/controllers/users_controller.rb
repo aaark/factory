@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 
   end
   def share_form
-    @users = User.all
+    @users = User.where("id!=?", current_user.id)
   end
   def attach_sharing
     @vech = Vehicle.find(params[:id])
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     redirect_to current_user
   end
   def transfer
-    @users = User.all
+    @users = User.where("id!=?", current_user.id)
   end
   private
   def user_params
