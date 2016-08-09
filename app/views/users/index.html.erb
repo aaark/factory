@@ -4,8 +4,8 @@
     <th>User_Name</th>
     <th>User_Email</th>
     <th>User_UserType</th>
-    <th>Action1</th>
-    <th>Action2</th>
+    <th>Edit</th>
+    <th>Delete</th>
 
 
   </tr>
@@ -13,8 +13,8 @@
 
       <tr>
         <td><%=u.id%></td><td><%=u.name%></td>  <td><%=u.email%></td> <td><%=u.admin%></td>
-        <td><%= link_to 'Edit', edit_user_path(u) %></td>
-        <td><%= link_to 'Destroy', u, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to ( image_tag "edit.jpg", width:'25', height:'25' ), edit_user_path(u) %></td>
+        <td><%= link_to ( image_tag "delete.jpg", width:'25', height:'25' ), u, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 
   <%end%>
