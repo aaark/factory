@@ -37,9 +37,9 @@
             <td><%= vech.power_rating%></td>
             <td><%= vech.st_date%></td>
             <td><%= vech.del_date%></td>
-            <td><%= link_to 'Destroy',delete_vehicle_vehicle_path(vech) , method: :delete %></td>
-            <td><%= link_to 'Edit', edit_vehicle_path(vech) %></td>
-            <td><%= link_to 'share', share_form_user_path(vech) %></td>
+            <td><%= link_to ( image_tag "delete.jpg", width:'25', height:'25' ),delete_vehicle_vehicle_path(vech) , method: :delete %></td>
+            <td><%= link_to ( image_tag "edit.jpg", width:'25', height:'25' ), edit_vehicle_path(vech) %></td>
+            <td><%= link_to ( image_tag "share.jpg", width:'25', height:'25' ), share_form_user_path(vech) %></td>
 
           </tr>
           </br>

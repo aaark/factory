@@ -12,10 +12,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       
-      flash[:success] = "User has been created"
+      flash.now[:success] = "User has been created"
       render 'new'
     else
-      flash[:errror] = "not saved"
+      flash.now[:errror] = "not saved"
       render 'new'
     end
   end
@@ -37,9 +37,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       # Handle a successful update.
-      render text: "updated successfully"
-
+      flash.now[:success]="updated successfully"
+      redirect_to current_user
     else
+      flash.now[:errors]= "Not updated there are some problem"
       render 'edit'
     end
   end
@@ -48,24 +49,24 @@ class UsersController < ApplicationController
     #check_logged_in?
     @user = User.find(params[:id])
     if @user.admin ==  true
-      flash[:error] = "Since you are an admin so you can not delete your self so first you need to transfer your adminstration then ask admin to delete yourself" 
+      flash.now[:error] = "Since you are an admin so you can not delete your self so first you need to transfer your adminstration then ask admin to delete yourself" 
     else
       @user.destroy  
-      flash[:success] = "User deleted"
+      flash.now[:success] = "User deleted"
     end
     redirect_to :back  
   end
   def transfer1
     #check_logged_in?
     if current_user.admin == false
-      flash[:failure] = "Sorry you are no longer admin now"
+      flash.now[:failure] = "Sorry you are no longer admin now"
       redirect_to current_user
     else
       @user = User.find_by(id: params[:test][:id])
       puts "user to admin",@user
       current_user.update(admin: "false")
       @user.update(admin:"true")
-      flash[:success] = "Adminstration transfered"
+      flash.now[:success] = "Adminstration transfered"
       redirect_to current_user
     end
 
@@ -99,9 +100,7 @@ class UsersController < ApplicationController
       flash[:error]="Your credintials doesn't match"
       redirect_to users_change_pass_path
     end
-
   end  
-
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)

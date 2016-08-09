@@ -44,10 +44,11 @@ class VehiclesController < ApplicationController
     @veh= Vehicle.find(params[:id])
    if @veh.del_date > Date.today
       flash[:errors] = "Sorry Cant be deleted Please check your delivery date"
-      redirect_to @current_user
     else
       @current_user.vehicles.delete(@veh)
-      redirect_to @current_user
+      flash[:success] = "Removed from your list"
+      redirect_to :back
+    
     end
 
   end
