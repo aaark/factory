@@ -1,38 +1,63 @@
-<header class="navbar navbar-fixed-top navbar-inverse" style="color:red;">
-  <div class="container" style="background-color: maroon;">
-
-    <nav>
-      <%if logged_in? == true%>
-
-      <div class="dropdown" style="width:100%;display:block;">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Operations
-      <span class="caret"></span></button>
-    <ul class= "dropdown-menu">
-      <% if current_user.admin == true  %>
-          <li>    <%= link_to 'Create new user', new_user_path %></li>
-          <li><%= link_to 'See Users', users_path %></li>
-          <li><%= link_to 'See vehicles', vehicles_path %></li>
-          <li><a href="/vehicles/new">Add vehicles</a></li>
-          <li><%= link_to 'Transfer Your Admnstration', transfer_user_path(current_user) %></li>
-      <%end%>    
-          <li><%= link_to 'Add your Vehicle', add_vehicle_to_list_vehicle_path(current_user) %></li>
-          <li><%= link_to 'Change Password', users_change_pass_path%></li>
-
+<header>
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-custom">
+    <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">Factory</a>
+        </div>
+    <ul class="nav navbar-nav">
       
-    </ul>
-  </div>
-   <%end%>
-      <ul class="nav navbar-nav navbar-right">
-
-        <li><%= link_to "Help",   '#' %></li>
-        <%if logged_in? %>
-            <li><%= link_to "Log Out", '/logout' %></li>
-            <li><%= link_to "Home",   user_path(current_user) %></li>
-        <%else%>
-            <li><%= link_to "Log in", '/login' %></li>
-
-      <%end%>
+      
+        <%if logged_in? == true%>
+          <li>    <%= link_to ' Home', user_path(current_user) %></li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Operations
+          <span class="caret"></span></a>
+            <ul class= "dropdown-menu">
+              <% if current_user.admin == true  %>
+                <li>    <%= link_to 'Create new user', new_user_path %></li>
+                <li><%= link_to 'See Users', users_path %></li>
+                <li><%= link_to 'See vehicles', vehicles_path %></li>
+                <li><a href="/vehicles/new">Add vehicles</a></li>
+                <li><%= link_to 'Transfer Your Admnstration', transfer_user_path(current_user) %></li>
+              <%end%>    
+              <li><%= link_to 'Add your Vehicle', add_vehicle_to_list_vehicle_path(current_user) %></li>
+              <li><%= link_to 'Change Password', users_change_pass_path%></li>
+            </ul>
+          </li>  
+        <%end%>
       </ul>
-    </nav>
+      <ul class="nav navbar-nav navbar-right">
+        <%if logged_in? %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
+            <span class="caret"></span></a>
+            <ul class= "dropdown-menu accountmenu">
+
+              <li>&nbsp; &nbsp;Welcome: &nbsp; <%=current_user.name%></li>
+
+              <li>&nbsp; &nbsp;Email: &nbsp;<%=current_user.email%></li>
+              <%if current_user.admin == true%>
+              <li>&nbsp; &nbsp;Role: &nbsp; Admin</li>
+              <%end%>
+            </ul>
+          </li>      
+             <li><%= link_to (logout_path ) do %>
+              <span class="glyphicon glyphicon-log-out"> Log out</span>
+              <%end%>
+              </li> 
+
+        <%else%>
+            <li><%= link_to (login_path ) do %>
+              <span class="glyphicon glyphicon-log-in"> Login</span>
+              <%end%>
+              </li>
+        <%end%>      
+    </ul>
+
+
+  </div>
+</nav>
+ 
   </div>
 </header>

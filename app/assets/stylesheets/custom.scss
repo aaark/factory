@@ -43,7 +43,7 @@ body{
   width:100%;
 }
 header{
-  background-color: red;
+  
 }
 
 body {
@@ -121,6 +121,7 @@ footer ul li {
   float: left;
   margin-left: 15px;
 }
+.accountmenu li{ color:#000;}
 
 /* mixins, variables, etc. */
 
@@ -140,3 +141,23 @@ $gray-medium-light: #eaeaea;
   margin-top: 45px;
   @include box_sizing;
 }
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #CC3333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
