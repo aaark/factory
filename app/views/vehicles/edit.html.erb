@@ -1,11 +1,14 @@
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/redmond/jquery-ui.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.js"></script>
 
-<% provide(:title, 'Add a new Vehicle') %>
+<% provide(:title, '  UpdateVehicle') %>
 <h1>Create Vehicle</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-      <%= form_for @vehicle, url: vehicle_path, html: {onsubmit: "return validatedate()"} do |f| %>
+      <%= form_for @vehicle, url: vehicle_path do |f| %>
         <table class="table">
 
         <tr>
@@ -16,11 +19,11 @@
 
           <tr>
             <td><%= f.label :StartDate %></td>
-            <td><%= f.date_field :st_date %></td>
+            <td><%= f.text_field :st_date %></td>
           </tr>
           <tr>
             <td><%= f.label :DeliveryDate %></td>
-            <td><%= f.date_field :del_date %></td>
+            <td><%= f.text_field :del_date %></td>
           </tr>
           <tr>
 

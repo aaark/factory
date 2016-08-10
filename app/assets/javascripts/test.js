@@ -16,7 +16,7 @@ function validateform()
     }
 }
 
-function validatedate()
+/*function validatedate()
 {
     alert("validating");
     //var st_date = ;
@@ -32,6 +32,14 @@ function validatedate()
     }
 
 
-}
+}*/
 
 
+$("#vehicle_st_date").datepicker({
+  minDate: 0,
+  onSelect: function(date) {
+    $("vehicle_del_date").datepicker('option', 'minDate', date);
+  }
+});
+
+$("#vehicle_del_date").datepicker({});
