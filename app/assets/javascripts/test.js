@@ -3,12 +3,12 @@
  */
 function validateform()
 {
-    alert("hello");
+    
     if(document.getElementById("vehicle_type_name").value == "truck")
     {
         var power = document.getElementById("vehicle_power_rating").value;
          power = parseFloat(power/1.00);
-        alert(power);
+        
 
         document.getElementById("vehicle_wt_oc").value = parseFloat(power / 2.00);
         document.getElementById("vehicle_wt_oc").setAttribute('readonly','readonly');
