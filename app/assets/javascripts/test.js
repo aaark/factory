@@ -12,7 +12,11 @@ function validateform()
 
         document.getElementById("vehicle_wt_oc").value = parseFloat(power / 2.00);
         document.getElementById("vehicle_wt_oc").setAttribute('readonly','readonly');
-        document.getElementById("vehicle_power_rating").readonly = true;
+        //document.getElementById("vehicle_power_rating").readonly = true;
+    }
+    else
+    {
+      document.getElementById("vehicle_wt_oc").readOnly=false;
     }
 }
 
