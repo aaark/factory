@@ -78,7 +78,7 @@ class UsersController < ApplicationController
     @vech = Vehicle.find(params[:id])
     @user = User.find(params[:test][:id])
     if @user.vehicles.find_by(id: params[:id]) 
-      flash[:errors]=" user is already having"
+      flash[:errors]=" user is already having this vehicle"
       redirect_to current_user
     else   
       flash[:success]=" successfully shared"

@@ -65,10 +65,6 @@ $(document).ready(function() {
        changeYear: true
    });
 
-   $('#vehicle_st_date').onSelect: function () {
-      $("#vehicle_del_date").removeAttr("disabled");
-    }
-
    $('#vehicle_del_date').datepicker(
    {
        beforeShow: customRange,
