@@ -1,22 +1,24 @@
 
+<script>
+  $(document).ready(function() {
 
+   $('#vehicle_st_date').datepicker(
+   {
+       beforeShow: customRangeStart,
+       minDate: 0,
+       dateFormat: "yy-mm-dd",
+       changeYear: true
+   });
 
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function(){    
-    //Check if the current URL contains '#'
-    if(document.URL.indexOf("#")==-1){
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
-
-        //Reload the page
-        location.reload(true);
-    }
+   $('#vehicle_del_date').datepicker(
+   {
+       beforeShow: customRange,
+       dateFormat: "yy-mm-dd",
+       changeYear: true
+   });
 });
+
+
 </script>
 <% provide(:title, 'Add a new Vehicle') %>
 <h1>Add Vehicle</h1>

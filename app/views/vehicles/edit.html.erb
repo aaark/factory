@@ -1,22 +1,30 @@
 
-<script type="text/javascript">
-$(document).ready(function(){    
-    //Check if the current URL contains '#'
-    if(document.URL.indexOf("#")==-1){
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
+<script>
+$(document).ready(function() {
 
-        //Reload the page
-        location.reload(true);
-    }
+   $('#vehicle_st_date').datepicker(
+   {
+       beforeShow: customRangeStart,
+       minDate: 0,
+       dateFormat: "yy-mm-dd",
+       changeYear: true
+   });
+
+   $('#vehicle_del_date').datepicker(
+   {
+       beforeShow: customRange,
+       dateFormat: "yy-mm-dd",
+       changeYear: true
+   });
 });
+
+
 </script>
 
 
 
 <% provide(:title, '  UpdateVehicle') %>
-<h1>Update Vehicle</h1>
+<h1>Create Vehicle</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">

@@ -3,7 +3,6 @@
  */
 function validateform()
 {
-    alert("hello");
     if(document.getElementById("vehicle_type_name").value == "truck")
     {
         var power = document.getElementById("vehicle_power_rating").value;
@@ -33,40 +32,5 @@ function validatedate()
 
 
 }
-
-
-function customRange(input) 
-{ 
-return {
-        minDate: (input.id == "vehicle_del_date" ? $("#vehicle_st_date").datepicker("getDate") : new Date())
-      }; 
-}
-
-// To set maxdate in startdate
-function customRangeStart(input) 
-{ 
-return {
-        maxDate:(input.id == "vehicle_st_date" ? $("#vehicle_del_date").datepicker("getDate") : null)
-      }; 
-}
-
-$(document).ready(function() {
-
-   $('#vehicle_st_date').datepicker(
-   {
-       beforeShow: customRangeStart,
-       minDate: 0,
-       dateFormat: "yy-mm-dd",
-       changeYear: true
-   });
-
-   $('#vehicle_del_date').datepicker(
-   {
-       beforeShow: customRange,
-       dateFormat: "yy-mm-dd",
-       changeYear: true
-   });
-});
-
 
 
