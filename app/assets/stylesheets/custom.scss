@@ -146,7 +146,13 @@ $gray-medium-light: #eaeaea;
     color: #FFFFFF;
     background-color: maroon;
 }
+input:invalid {
+  border: 1px solid red;
+}
 
+input:valid {
+  border: 1px solid green;
+}
 
 
 

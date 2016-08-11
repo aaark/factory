@@ -3,7 +3,7 @@
  */
 function validateform()
 {
-    
+    alert("hello");
     if(document.getElementById("vehicle_type_name").value == "truck")
     {
         var power = document.getElementById("vehicle_power_rating").value;
@@ -16,7 +16,7 @@ function validateform()
     }
 }
 
-/*function validatedate()
+function validatedate()
 {
     alert("validating");
     //var st_date = ;
@@ -32,7 +32,7 @@ function validateform()
     }
 
 
-}*/
+}
 
 
 function customRange(input) 
