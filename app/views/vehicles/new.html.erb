@@ -17,6 +17,9 @@ $(document).ready(function(){
         location.reload(true);
     }
 });
+
+
+
 </script>
 <% provide(:title, 'Add a new Vehicle') %>
 <h1>Add Vehicle</h1>
@@ -38,7 +41,7 @@ $(document).ready(function(){
           </tr>
           <tr>
             <td><%= f.label :DeliveryDate %></td>
-            <td><%= f.text_field :del_date %></td>
+            <td><%= f.text_field :del_date, {disabled: 'disabled'} %></td>
           </tr>
           <tr>
 

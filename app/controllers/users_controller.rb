@@ -77,8 +77,14 @@ class UsersController < ApplicationController
   def attach_sharing
     @vech = Vehicle.find(params[:id])
     @user = User.find(params[:test][:id])
-    @user.vehicles << @vech
-    redirect_to current_user
+    if @user.vehicles.find_by(id: params[:id]) 
+      flash[:errors]=" user is already having"
+      redirect_to current_user
+    else   
+      flash[:success]=" successfully shared"
+      @user.vehicles << @vech
+      redirect_to current_user
+    end  
   end
   def transfer
     @users = User.where("id!=?", current_user.id)

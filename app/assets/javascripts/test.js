@@ -1,6 +1,8 @@
 /**
  * Created by rahul on 2/8/16.
  */
+
+
 function validateform()
 {
     
@@ -62,6 +64,10 @@ $(document).ready(function() {
        dateFormat: "yy-mm-dd",
        changeYear: true
    });
+
+   $('#vehicle_st_date').onSelect: function () {
+      $("#vehicle_del_date").removeAttr("disabled");
+    }
 
    $('#vehicle_del_date').datepicker(
    {
