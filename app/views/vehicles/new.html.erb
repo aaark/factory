@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 <script type="text/javascript">
 $(document).ready(function(){    
     //Check if the current URL contains '#'
@@ -41,7 +35,7 @@ $(document).ready(function(){
           </tr>
           <tr>
             <td><%= f.label :DeliveryDate %></td>
-            <td><%= f.text_field :del_date, {disabled: 'disabled'} %></td>
+            <td><%= f.text_field :del_date, class: 'datepicker'%></td>
           </tr>
           <tr>
 

@@ -1,5 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :check_logged_in?
+  before_action :check_for_admin, only: [:new, :index , :destroy]
+
 
   def new
     @vehicle = Vehicle.new
