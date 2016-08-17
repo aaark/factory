@@ -1,56 +1,51 @@
 
-<script type="text/javascript">
- // $(document).ready(function(){    
-    // location.reload(true);
- // });
-</script>
+
 <% provide(:title, 'Add a new Vehicle') %>
 <h1>Add Vehicle</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
       <%= form_for @vehicle, url: vehicles_path, html: {onsubmit: "return validate()"} do |f| %>
-        <table class="table" border="1">
 
-        <tr>
+        <div class="form-group">
+          <%= f.label :Color %>
+          <%= f.text_field :color,{class: "form-control"} %>
+        </div>  
 
-            <td><%= f.label :Color %></td>
-            <td><%= f.text_field :color %> </td>
-          </tr>
+        <div class="form-group">
+            <%= f.label :StartDate %>
+            <%= f.text_field :st_date,{class: "form-control"}%>
+        </div> 
+        <div class="form-group">
+            <%= f.label :DeliveryDate %>
+            <%= f.text_field :del_date, {class: "form-control", disabled: true}%>
+        </div>
+        <div class="form-group">
+            <%= f.label :fuel %>
+            <%= f.select :fuel, Vehicle::FUEL,{},{class: "form-control"} %>
+        </div>  
+        <div class="form-group">       
+            <%= f.label :PowerRating %>
+            <%= f.number_field :power_rating, {class: "form-control",onblur: "validateform()" }%>
+        </div>  
+        <div class="form-group">
+          <%= f.label :TypeName %>
+          <%= f.select :type_name, Vehicle::TYPE_NAME,{},{class: "form-control", onchange: "validateform()" }%>
+        </div>
+        <div class="form-group">
+            <%= f.label :WeightOccupants %>
+            <%= f.number_field :wt_oc, {class: "form-control"}%>
+        </div>
+        <div class="form-group">
 
-          <tr>
-            <td><%= f.label :StartDate %></td>
-            <td><%= f.text_field :st_date%></td>
-          </tr>
-          <tr>
-            <td><%= f.label :DeliveryDate %></td>
-            <td><%= f.text_field :del_date, {disabled: true}%></td>
-          </tr>
-          <tr>
-
-            <td><%= f.label :fuel %></td>
-            <td><%= f.select :fuel, Vehicle::FUEL %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :PowerRating %></td>
-            <td><%= f.number_field :power_rating, {onblur: "validateform()" }%></td>
-          </tr>
-          <tr>
-            <td><%= f.label :TypeName %></td>
-            <td><%= f.select :type_name, Vehicle::TYPE_NAME,{},{onchange: "validateform()" }%></td>
-          </tr>
-          <tr>
-            <td><%= f.label :WeightOccupants %></td>
-            <td><%= f.number_field :wt_oc%></td>
-          </tr>
-          <tr><td colspan="2" style="width:100%"><%= f.button "Insert Vehicle", class: "btn btn-primary mycls"  %></td></tr>
-        </table>
-
-  <% end %>
+          <%= f.button "Insert Vehicle", class: "btn btn-primary form-control"  %>
+        </div>  
+      <% end %>
   </div>
 </div>
 
-<script type="text/javascript">
+<script>
+
 $(document).ready(function() {
 
    $('#vehicle_st_date').datepicker(

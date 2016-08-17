@@ -1,41 +1,151 @@
+<script type="text/javscript">
+</script>
 
-<% provide(:title, 'Update Users profile') %>
-<h1>Update a user</h1>
+
+
+
+<style>
+span{
+  background-color:660000;font-family:TimesNewRoman;font-size:13px;color:red;
+}
+</style>
+
+
+
+<% provide(:title, 'Update user') %>
+<h1>Update</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <%= form_for(@user) do |f| %>
-        <table class="table">
-          <tr>
+    <%= form_for @user, url: users_path, html:  { onsubmit: "return submit_1();" }  do |f| %>
+       
+          <div class="form-group">
 
-            <td><%= f.label :name %></td>
-            <td><%= f.text_field :name %> </td>
-          </tr>
-          <tr>
+            <%= f.label :name %>
+            <span id="nameerror"></span>
+            <%= f.text_field :name, {class: "form-control", onblur: "forName()"} %>
+             
+          </div>  
+         
+          <div class="form-group">
 
-            <td><%= f.label :email %></td>
-            <td><%= f.email_field :email %></td>
-          </tr>
-          <tr>
+            <%= f.label :email %>
+             <span id="emailerror" ></span>
+            <%= f.email_field :email, {class: "form-control", onblur: "forEmail()"} %>
+           
+          </div>
+          <div class="form-group">
 
-            <td><%= f.label :password %></td>
-            <td><%= f.password_field :password %></td>
+            <%= f.label :password %>
+            <span id="pwderror" ></span>
+            <td><%= f.password_field :password, {class: "form-control", onblur: "clear_span(this.id, pwderror)"} %>
+            
 
-          </tr>
-          <tr>
+          </div>
 
-            <td><%= f.label :password_confirmation, "Confirmation" %></td>
-            <td><%= f.password_field :password_confirmation %></td>
+          <div class="form-group">
 
-          </tr>
-
-
-          <tr><td><%= f.submit "Update", class: "btn btn-primary" %></td></tr>
-        </table>
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <span id="cpwderror"></span>
+            <%= f.password_field :password_confirmation, {class: "form-control", onblur: "clear_span(this.id, cpwderror)"} %>
+             
+          </div>
+          <%= f.button "Update User", class: "btn btn-primary"%>
+        
     <% end %>
-
-
 
   </div>
 </div>
+
+<script type="text/javascript">
+  function submit_1(){
+  alert("hello");
+  var uname = document.getElementById("user_name").value,
+    uemail=document.getElementById("user_email").value,
+    upwd = document.getElementById("user_password").value,
+    ucpwd = document.getElementById("user_password_confirmation").value;
+
+    
+  if( uname == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("user_name").focus();
+    document.getElementById("nameerror").innerHTML = "Please fill name";
+    return false;
+  }
+  else if( uemail == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("emailerror").innerHTML = "Please fill email";
+    alert("hello1");
+    return false;
+    
+  }
+  
+  if( upwd == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("pwderror").innerHTML = "Please fill password";
+    alert("hello1");
+    return false;
+  }
+  if( ucpwd == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("cpwderror").innerHTML = "Please fill Confirm password";
+    alert("hello1");
+    return false;
+  }
+      
+}
+
+function clear_span(text_id, span_id)
+{ 
+  if(text_id.value !="")
+    {
+      //span_id.style.color="green";
+      span_id.innerHTML="";
+    }
+  
+}
+
+function forName()
+{
+  
+  var uname = document.getElementById('user_name').value;
+  var c=0;
+  for(i=0; i<uname.length; i++)
+  {
+    if(!((uname.charAt(i)>='A' && uname.charAt(i)<='Z') || (uname.charAt(i)>='a' && uname.charAt(i)<='z')))
+    {
+      c++;
+    }
+  }
+  
+  if(c>0)
+  {
+    document.getElementById('nameerror').innerHTML="please enter a valid name";
+    document.getElementById('user_name').focus();
+   return false;
+  }
+  else
+  {
+   
+    document.getElementById('nameerror').innerHTML="";
+  }
+}
+
+function forEmail()
+{
+  alert("checkign email");
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById('user_email').value))  
+  {  
+        document.getElementById('emailerror').innerHTML="";
+    return (true)  
+  }  
+    document.getElementById('emailerror').innerHTML="please enter a valid email";
+    //document.getElementById('user_email').focus();
+    return (false)  
+}
+</script>

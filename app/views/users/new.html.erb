@@ -51,8 +51,9 @@ span{
             <%= f.password_field :password_confirmation, {class: "form-control", onblur: "clear_span(this.id, cpwderror)"} %>
              
           </div>
-          <%= f.button "Create User", class: "btn btn-primary"%>
-        
+          <div class="form-group">
+            <%= f.button "Create User", class: "btn btn-primary form-control"%>
+          </div>
     <% end %>
 
   </div>

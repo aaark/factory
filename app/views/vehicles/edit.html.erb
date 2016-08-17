@@ -1,65 +1,66 @@
 
 
-
-
-<script type="text/javascript">
-$(document).ready(function(){    
-    //Check if the current URL contains '#'
-    if(document.URL.indexOf("#")==-1){
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
-
-        //Reload the page
-        location.reload(true);
-    }
-});
-</script>
-
-
-
-<% provide(:title, '  UpdateVehicle') %>
-<h1>Update Vehicle</h1>
+<% provide(:title, 'Update Vehicle') %>
+<h1>Edit Vehicle</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-      <%= form_for @vehicle, url: vehicle_path do |f| %>
-        <table class="table">
+      <%= form_for @vehicle, url: vehicles_path, html: {onsubmit: "return validate()"} do |f| %>
 
-        <tr>
+        <div class="form-group">
+          <%= f.label :Color %>
+          <%= f.text_field :color,{class: "form-control"} %>
+        </div>  
 
-            <td><%= f.label :Color %></td>
-            <td><%= f.text_field :color %> </td>
-          </tr>
+        <div class="form-group">
+            <%= f.label :StartDate %>
+            <%= f.text_field :st_date,{class: "form-control"}%>
+        </div> 
+        <div class="form-group">
+            <%= f.label :DeliveryDate %>
+            <%= f.text_field :del_date, {class: "form-control", disabled: true}%>
+        </div>
+        <div class="form-group">
+            <%= f.label :fuel %>
+            <%= f.select :fuel, Vehicle::FUEL,{},{class: "form-control"} %>
+        </div>  
+        <div class="form-group">       
+            <%= f.label :PowerRating %>
+            <%= f.number_field :power_rating, {class: "form-control",onblur: "validateform()" }%>
+        </div>  
+        <div class="form-group">
+          <%= f.label :TypeName %>
+          <%= f.select :type_name, Vehicle::TYPE_NAME,{},{class: "form-control", onchange: "validateform()" }%>
+        </div>
+        <div class="form-group">
+            <%= f.label :WeightOccupants %>
+            <%= f.number_field :wt_oc, {class: "form-control"}%>
+        </div>
+        <div class="form-group">
 
-          <tr>
-            <td><%= f.label :StartDate %></td>
-            <td><%= f.text_field :st_date %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :DeliveryDate %></td>
-            <td><%= f.text_field :del_date %></td>
-          </tr>
-          <tr>
-
-            <td><%= f.label :fuel %></td>
-            <td><%= f.select :fuel, Vehicle::FUEL %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :PowerRating %></td>
-            <td><%= f.number_field :power_rating,{onblur: "validateform()" }%></td>
-          </tr>
-          <tr>
-            <td><%= f.label :TypeName %></td>
-            <td><%= f.select :type_name, Vehicle::TYPE_NAME,{},{onchange: "validateform()" }%></td>
-          </tr>
-          <tr>
-            <td><%= f.label :WeightOccupants %></td>
-            <td><%= f.number_field :wt_oc%></td>
-          </tr>
-          <tr><td><%= f.submit "Update Vehicle", class: "btn btn-primary" %></td></tr>
-        </table>
-
-  <% end %>
+          <%= f.button "Update", class: "btn btn-primary form-control"  %>
+        </div>  
+      <% end %>
   </div>
 </div>
+
+<script>
+
+$(document).ready(function() {
+
+   $('#vehicle_st_date').datepicker(
+   {
+       beforeShow: customRangeStart,
+       minDate: 0,
+       dateFormat: "yy-mm-dd",
+       changeYear: true
+   });
+
+   $('#vehicle_del_date').datepicker(
+   {
+       beforeShow: customRange,
+       dateFormat: "yy-mm-dd",
+       changeYear: true
+   });
+});
+</script>
