@@ -39,6 +39,11 @@ function validatedate()
 
 }
 
+function validate()
+{
+ alert("hello");
+}
+
 
 function customRange(input) 
 { 
@@ -72,3 +77,27 @@ $(document).ready(function() {
        changeYear: true
    });
 });
+
+
+
+
+function f()
+{
+  alert("hello");
+}
+
+
+
+function submit(){
+  alert("hello");
+ /* var uname = document.getElementById("user_name").value;
+    
+  if( uname == "" )
+  {
+    document.form.name.focus() ;
+    document.getElementById("errorBox").innerHTML = "Enter the Name";
+    return false;
+  }
+  */
+      
+}

@@ -72,6 +72,7 @@ class UsersController < ApplicationController
 
   end
   def share_form
+    check_logged_in?
     @users = User.where("id!=?", current_user.id)
   end
   def attach_sharing

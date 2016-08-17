@@ -1,6 +1,6 @@
 class Vehicle < ApplicationRecord
   FUEL = %w(Petrol Diesel CNG)
-  TYPE_NAME= ['sudan', 'truck']
+  TYPE_NAME= ['sedan', 'truck']
   validates :color, presence: true
   validates :st_date, presence: true
   validates :del_date, presence: true

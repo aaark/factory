@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   protect_from_forgery with: :exception
   before_filter :set_cache_headers
+  before_action :set_cache_headers
+
 
  # before_filter :check_logged_in?, except: [:home, :new]
 
@@ -23,9 +25,8 @@ class ApplicationController < ActionController::Base
     end      	
   end
   
-  private
   def set_cache_headers
-    response.headers["Cache-Control"] = "no-cache=true, max-age=0, must-revalidate, no-store=true"
+    response.headers["Cache-Control"] = "no-store"
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = Time.now
   end
