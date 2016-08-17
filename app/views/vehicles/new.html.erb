@@ -1,24 +1,32 @@
 
 
+<style>
+span{
+  color:red;
+}
+</style>
 <% provide(:title, 'Add a new Vehicle') %>
 <h1>Add Vehicle</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-      <%= form_for @vehicle, url: vehicles_path, html: {onsubmit: "return validate()"} do |f| %>
+      <%= form_for @vehicle, url: vehicles_path, html: {onsubmit: "return submit_11()"} do |f| %>
 
         <div class="form-group">
           <%= f.label :Color %>
-          <%= f.text_field :color,{class: "form-control"} %>
+          <span id="colorerror"></span>
+          <%= f.text_field :color,{class: "form-control",  onblur: "clear_span(this.id, 'colorerror')"} %>
         </div>  
 
         <div class="form-group">
             <%= f.label :StartDate %>
-            <%= f.text_field :st_date,{class: "form-control"}%>
+            <span id="starterror"></span>
+            <%= f.text_field :st_date,{class: "form-control",  onblur: "clear_span(this.id, 'starterror')"}%>
         </div> 
         <div class="form-group">
             <%= f.label :DeliveryDate %>
-            <%= f.text_field :del_date, {class: "form-control", disabled: true}%>
+          <span id="delerror"></span>
+          <%= f.text_field :del_date, {class: "form-control", onblur: "clear_span(this.id, 'delerror')"}%>
         </div>
         <div class="form-group">
             <%= f.label :fuel %>
@@ -26,6 +34,7 @@
         </div>  
         <div class="form-group">       
             <%= f.label :PowerRating %>
+            <span id="powerror"></span>
             <%= f.number_field :power_rating, {class: "form-control",onblur: "validateform()" }%>
         </div>  
         <div class="form-group">
@@ -34,7 +43,8 @@
         </div>
         <div class="form-group">
             <%= f.label :WeightOccupants %>
-            <%= f.number_field :wt_oc, {class: "form-control"}%>
+            <span id="ocerror"></span>
+            <%= f.number_field :wt_oc, {class: "form-control",onblur: "clear_span(this.id, 'ocerror')"}%>
         </div>
         <div class="form-group">
 
@@ -45,6 +55,92 @@
 </div>
 
 <script>
+function submit_11(){
+  var v_color = document.getElementById("vehicle_color").value,
+    start=document.getElementById("vehicle_st_date").value,
+    power=document.getElementById("vehicle_power_rating").value,
+    oc=document.getElementById("vehicle_wt_oc").value,
+    del = document.getElementById("vehicle_del_date").value;
+    
+
+    
+  if( v_color == "" )
+  {
+    //document.form.name.focus() ;
+   //document.getElementById("vehicle_color").focus();
+    document.getElementById("colorerror").innerHTML = "Please fill color";
+    return false;
+  }
+  if( start == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("starterror").innerHTML = "Please fill start date"
+    return false;
+    
+  }
+  
+  if( del == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("delerror").innerHTML = "Please fill deleivery date";
+    return false;
+  }
+  if( power == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("powerror").innerHTML = "Please fill rating";
+    return false;
+  }
+  if( oc == "" )
+  {
+    //document.form.name.focus() ;
+    document.getElementById("ocerror").innerHTML = "Please fill Occupants";
+    return false;
+  }
+      
+}
+
+function clear_span(text_id, span_id)
+{ 
+  
+  if(text_id.value !="")
+    {      //span_id.style.color="green";
+      document.getElementById(span_id).innerHTML="";
+    }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
 
