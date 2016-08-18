@@ -1,6 +1,11 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
-
+<style>
+.mycls
+{
+    width:100px;
+}
+</style>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
@@ -12,7 +17,9 @@
         	<%= f.label :password %>
         	<%= f.password_field :password, class: 'form-control' %>
         </div>
-        <%= f.submit "Log in", class: "btn btn-primary form-control" %>
+        <div class="form-group">
+            <center> <%= f.submit "Log in", class: "btn btn-primary  mycls" %></center>
+        </div>
     <% end %>
 
 

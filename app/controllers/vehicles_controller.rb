@@ -24,7 +24,7 @@ class VehiclesController < ApplicationController
   def show
   end
   def add_vehicle
-    #@vehicle= Vehicle.find(params[:id])
+    # @vehicle= Vehicle.find(params[:id])
   end
   def add
     @current_user = current_user
@@ -37,7 +37,6 @@ class VehiclesController < ApplicationController
       @veh= Vehicle.find(params[:id])
       @current_user.vehicles << @veh
       flash[:success] = "Successfully added"
-
       redirect_to add_vehicle_to_list_vehicle_path
     end
   end

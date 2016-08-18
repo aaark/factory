@@ -4,6 +4,14 @@
 span{
   color:red;
 }
+
+        /*#vehicle_st_date
+        {
+            background-image: url(/assets/aa.jpg);
+            background-repeat: no-repeat;
+            padding-left: 2px;
+        }*/
+
 </style>
 <% provide(:title, 'Add a new Vehicle') %>
 <h1>Add Vehicle</h1>
@@ -111,37 +119,6 @@ function clear_span(text_id, span_id)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function() {
 
    $('#vehicle_st_date').datepicker(
@@ -150,6 +127,7 @@ $(document).ready(function() {
        minDate: 0,
        dateFormat: "yy-mm-dd",
        changeYear: true
+          
    });
 
    $('#vehicle_del_date').datepicker(

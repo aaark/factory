@@ -78,7 +78,6 @@ span{
   {
     //document.form.name.focus() ;
     document.getElementById("emailerror").innerHTML = "Please fill email";
-    alert("hello1");
     return false;
     
   }
@@ -87,14 +86,12 @@ span{
   {
     //document.form.name.focus() ;
     document.getElementById("pwderror").innerHTML = "Please fill password";
-    alert("hello1");
     return false;
   }
   if( ucpwd == "" )
   {
     //document.form.name.focus() ;
     document.getElementById("cpwderror").innerHTML = "Please fill Confirm password";
-    alert("hello1");
     return false;
   }
       
@@ -138,7 +135,6 @@ function forName()
 
 function forEmail()
 {
-  alert("checkign email");
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById('user_email').value))  
   {  
         document.getElementById('emailerror').innerHTML="";
