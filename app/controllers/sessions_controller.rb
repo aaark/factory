@@ -10,9 +10,10 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
     else
-      flash.now[:error] = 'Inavalid email or password!!!'
+      flash.now[:danger] = 'Inavalid email or password!!!'
       render 'new'
     end
   end

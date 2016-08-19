@@ -15,6 +15,7 @@
           <span class="caret"></span></a>
             <ul class= "dropdown-menu">
               <% if current_user.admin == true  %>
+
                 <li>    <%= link_to 'Create new user', new_user_path %></li>
                 <li><%= link_to 'See Users', users_path %></li>
                 <li><%= link_to 'See vehicles', vehicles_path %></li>
@@ -30,7 +31,10 @@
       <ul class="nav navbar-nav navbar-right">
         <%if logged_in? %>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name%>
+              <%if current_user.admin == true%>
+                 (Admin)
+              <%end%>
             <span class="caret"></span></a>
             <ul class= "dropdown-menu accountmenu">
 
