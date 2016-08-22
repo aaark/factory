@@ -95,8 +95,8 @@ Rails.application.configure do
     domain:               "example.com",
     enable_starttls_auto: true,
     authentication:       'plain',
-    user_name:            "rahul.ojha@forgeahead.io",
-    password:             "matajipranam@123@",
+    user_name:            "do-not-reply@forgeahead.io",
+    password:             "y5qaMXG2VN86aW0uuj0r",
     openssl_verify_mode: 'none'
       }
     config.action_mailer.default_url_options = { host: "https://factory1.herokuapp.com"}
