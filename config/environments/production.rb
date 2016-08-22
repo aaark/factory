@@ -99,6 +99,6 @@ Rails.application.configure do
     password:             "y5qaMXG2VN86aW0uuj0r",
     openssl_verify_mode: 'none'
       }
-    config.action_mailer.default_url_options = { host: "factory1.herokuapp.com/"}
+    config.action_mailer.default_url_options = { host: "factory1.herokuapp.com"}
 
 end
