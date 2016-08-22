@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     # check_logged_in?
     @user = User.new(user_params)
     if @user.save
-      
-      flash[:success] = 'User has been created'
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
       render 'new'
     else
       flash[:errror] = 'not saved'
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def show
     # check_logged_in?
     @user = User.find(params[:id])
-    @user1 = User.all
+   
   end
 
   def edit

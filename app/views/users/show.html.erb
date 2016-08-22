@@ -1,40 +1,45 @@
 
- <h3 align="center"> Vehicles to your list</h3>
 <!--<a href="/create"> add new user</a>-->
   
-<div>
-    <table  class="table">
-      <tr>
-        <th> ID</th>
-        <th> Color</th>
-        <th> Type name</th>
-        <th> Weight/Occupants</th>
-        <th> Fuel type</th>
-        <th> Power rating</th>
-        <th> Start date</th>
-        <th> Delivery Date</th>
-        <th> Delete</th>
-        <th> Edit</th>
-        <th> Share</th>
+<% if current_user.activated == true%>
+  <div>
+    <h3 align="center"> Vehicles to your list</h3>
 
-      </tr>
-      <%@user.vehicles.each do |vech|%>
-          <tr>
-            <td><%= vech.id%></td>
-            <td><%= vech.color%></td>
-            <td><%= vech.type_name%></td>
-            <td><%= vech.wt_oc%></td>
-            <td><%= vech.fuel%></td>
-            <td><%= vech.power_rating%></td>
-            <td><%= vech.st_date%></td>
-            <td><%= vech.del_date%></td>
-            <td><%= link_to ( image_tag "delete.jpg", width:'25', height:'25' ),delete_vehicle_vehicle_path(vech) , method: :delete %></td>
-            <td><%= link_to ( image_tag "edit.jpg", width:'25', height:'25' ), edit_vehicle_path(vech) %></td>
-            <td><%= link_to ( image_tag "share.jpg", width:'25', height:'25' ), share_form_user_path(vech) %></td>
+      <table  class="table">
+        <tr>
+          <th> ID</th>
+          <th> Color</th>
+          <th> Type name</th>
+          <th> Weight/Occupants</th>
+          <th> Fuel type</th>
+          <th> Power rating</th>
+          <th> Start date</th>
+          <th> Delivery Date</th>
+          <th> Delete</th>
+          <th> Edit</th>
+          <th> Share</th>
 
-          </tr>
-          </br>
-      <%end%>
-    
-    </table>
-</div>
+        </tr>
+        <%@user.vehicles.each do |vech|%>
+            <tr>
+              <td><%= vech.id%></td>
+              <td><%= vech.color%></td>
+              <td><%= vech.type_name%></td>
+              <td><%= vech.wt_oc%></td>
+              <td><%= vech.fuel%></td>
+              <td><%= vech.power_rating%></td>
+              <td><%= vech.st_date%></td>
+              <td><%= vech.del_date%></td>
+              <td><%= link_to ( image_tag "delete.jpg", width:'25', height:'25' ),delete_vehicle_vehicle_path(vech) , method: :delete %></td>
+              <td><%= link_to ( image_tag "edit.jpg", width:'25', height:'25' ), edit_vehicle_path(vech) %></td>
+              <td><%= link_to ( image_tag "share.jpg", width:'25', height:'25' ), share_form_user_path(vech) %></td>
+
+            </tr>
+            </br>
+        <%end%>
+      
+      </table>
+  </div>
+<% else %>
+  <p>Please check your email to activate your account<p>
+<%end%>

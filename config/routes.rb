@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources  :account_activations, only: [:edit]
 
   #put '/users/:id/edit', to: 'users#edit'
  # get '/users/:id(.:format)', to: 'users#show'
